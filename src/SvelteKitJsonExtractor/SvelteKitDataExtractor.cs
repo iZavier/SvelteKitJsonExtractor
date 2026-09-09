@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;

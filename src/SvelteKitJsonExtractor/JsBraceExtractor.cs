@@ -1,5 +1,3 @@
-using System;
-
 namespace SvelteKitJsonExtractor
 {
     // Pulls a balanced { ... } block out of a chunk of JS source, without
