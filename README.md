@@ -32,6 +32,20 @@ using var doc = extractor.ExtractAsJsonDocument("https://example.com/some/page/"
 var root = doc.RootElement;
 ```
 
+Or we could do 
+
+```csharp
+using var extractor = SvelteKitDataExtractor.CreateWithFirefox(headless: true);
+
+var payload = extractor.ExtractAs<SvelteKitPayload>(url, SvelteKitJson.Options);
+//     ▲
+//     └── THIS line runs Selenium: launches Firefox, navigates, waits,
+//         scrapes the script tag, evals it, deserializes the JSON.
+//         Everything browser-related happens here.
+
+var ratios = payload.GetRouteData<FinancialRatiosRouteData>("financialData");
+```
+
 ## How it actually works
 
 Navigates to the page, waits for it to finish loading, then goes looking
